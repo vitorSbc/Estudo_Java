@@ -1,0 +1,20 @@
+package aplication;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import entities.Order;
+import entities.enums.OrderStatus;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		DateTimeFormatter fm = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		LocalDateTime lt = LocalDateTime.now();
+		Order ordem = new Order(25,LocalDateTime.now(),OrderStatus.PENDING_PAYMENT);
+		
+		System.out.println(ordem);
+	}
+
+}

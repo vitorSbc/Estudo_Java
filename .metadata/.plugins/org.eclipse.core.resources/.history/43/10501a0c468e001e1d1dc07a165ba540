@@ -1,0 +1,5 @@
+package entitie_enums;
+
+public enum Color {
+
+}

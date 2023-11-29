@@ -1,0 +1,12 @@
+package entitie;
+
+import java.util.ArrayList;
+
+import entitie.enums.WorkerLevel;
+
+public class Worker {
+	private String name;
+	private WorkerLevel level;
+	private Double baseSalary;
+	List<HourContract> lista = ArrayList<E>
+}

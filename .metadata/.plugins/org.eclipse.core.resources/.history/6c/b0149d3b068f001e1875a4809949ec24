@@ -1,0 +1,68 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
+import model.entitie.Reserva;
+import model.exceptions.DomainExecption;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		List<Reserva> lista = new ArrayList<>();
+		
+		try {
+			while(true) {
+				System.out.print("Numero do Quarto: ");
+				Integer quantity = sc.nextInt();
+				System.out.print("Data do Check-in (dd/MM/yyyy): ");
+				LocalDate chekin = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				System.out.print("Data do Check-out (dd/MM/yyyy): ");
+				LocalDate chekout = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				
+				Reserva reserva = new Reserva(quantity, chekin, chekout);
+				lista.add(reserva);
+				System.out.print(reserva + "\n");
+				
+				System.out.println("Deseja mudar a data da reserva? (s / n)");
+				char resposta = sc.next().charAt(0);
+				
+				if(resposta == 's') {
+					System.out.println();
+					System.out.println("Entre a data do update da reserva: ");
+					System.out.print("Data do Check-in (dd/MM/yyyy): ");
+					chekin = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+					System.out.print("Data do Check-out (dd/MM/yyyy): ");
+					chekout = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				
+					reserva.updateDate(chekin, chekout);
+					System.out.print(reserva);
+				}
+				else {
+					break;
+				}
+			}
+		}
+		catch (DomainExecption msg) {
+			System.out.println(msg.getMessage());
+		}
+		catch (DateTimeParseException e) {
+			System.out.println("Data invalida");
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Valor invalido");
+		}
+		
+		sc.close();
+	}
+
+}

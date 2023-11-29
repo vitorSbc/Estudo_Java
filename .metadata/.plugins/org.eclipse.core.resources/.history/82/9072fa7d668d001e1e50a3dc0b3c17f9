@@ -1,0 +1,31 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Client;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Digite os dados do cliente");
+		System.out.print("Name: \n");
+		String name = sc.nextLine();
+		System.out.print("E-mail: \n");
+		String email = sc.nextLine();
+		System.out.print("Data de nascimento (DD/MM/YYYY): %n");
+		LocalDate nascimento = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		Client cliente = new Client(name, email, nascimento);
+		
+		System.out.println(cliente);
+		sc.close();
+	}
+
+}

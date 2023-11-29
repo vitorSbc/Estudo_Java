@@ -1,0 +1,48 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
+import java.util.Scanner;
+
+import model.entitie.Reserva;
+import model.exceptions.DomainExecption;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+
+		try {
+			System.out.print("Numero do Quarto: ");
+			Integer quantity = sc.nextInt();
+			System.out.print("Data do Check-in (dd/MM/yyyy): ");
+			LocalDate chekin = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			System.out.print("Data do Check-out (dd/MM/yyyy): ");
+			LocalDate chekout = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			Reserva reserva = new Reserva(quantity, chekin, chekout);
+			System.out.print("Reserva: " + reserva);
+			
+			System.out.println();
+			System.out.println("Entre a data do update da reserva: ");
+			System.out.print("Data do Check-in (dd/MM/yyyy): ");
+			chekin = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			System.out.print("Data do Check-out (dd/MM/yyyy): ");
+			chekout = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		
+			reserva.updateDate(chekin, chekout);
+			System.out.print("Reserva: " + reserva);
+		}
+		catch (DomainExecption msg) {
+			System.out.println(msg.getMessage());
+		}
+		catch (DateTimeParseException e) {
+			System.out.println("Data invalida");
+		}
+		
+		sc.close();
+	}
+
+}

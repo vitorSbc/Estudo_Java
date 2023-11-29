@@ -1,0 +1,17 @@
+package aplication;
+
+import java.time.LocalDateTime;
+
+import entities.Order;
+import entities.enums.OrderStatus;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Order ordem = new Order(25, LocalDateTime.now(), OrderStatus.PENDING_PAYMENT);
+		
+		System.out.println(ordem);
+	}
+
+}

@@ -1,0 +1,55 @@
+package model.entitie;
+
+import java.time.Duration;
+import java.time.LocalDate;
+
+public class Reserva {
+	
+	private Integer roomNumber;
+	private LocalDate checkin;
+	private LocalDate checkout;
+	
+	public Reserva() {
+		
+	}
+	
+	public Reserva(Integer roomNumber, LocalDate checkin, LocalDate checkout) {
+		this.roomNumber = roomNumber;
+		this.checkin = checkin;
+		this.checkout = checkout;
+	}
+
+	public Integer getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(Integer roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public LocalDate getCheckin() {
+		return checkin;
+	}
+
+	public void setCheckin(LocalDate checkin) {
+		this.checkin = checkin;
+	}
+
+	public LocalDate getCheckout() {
+		return checkout;
+	}
+
+	public void setCheckout(LocalDate checkout) {
+		this.checkout = checkout;
+	}
+	
+	public Integer duration() {
+		Duration diferenca = Duration.between(checkin, checkout);
+		return (int)diferenca.toDays();
+	}
+	
+	public void updateDate(LocalDate chekcin, LocalDate chekout) {
+		this.checkin = chekcin;
+		this.checkout = chekout;
+	}
+}

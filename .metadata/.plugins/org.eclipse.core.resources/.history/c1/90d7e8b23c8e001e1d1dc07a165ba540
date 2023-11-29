@@ -1,0 +1,39 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Numero de produtos: ");
+		Integer quantity = sc.nextInt();
+		for(int i=0;i<quantity;i++) {
+			System.out.printf("Produto n#%d data: ",i + 1);
+			System.out.print("Comum, Usado ou Importado (u,s,i)? ");
+			char resposta = sc.next().charAt(0);
+			switch (resposta) {
+			case 'u': {
+				
+				
+			}
+			case 's': {
+				
+			}
+			case 'i': {
+				
+			}
+			default:
+				System.out.println("Valor invalido!");
+			}
+		}
+		
+		
+		sc.close();
+	}
+
+}

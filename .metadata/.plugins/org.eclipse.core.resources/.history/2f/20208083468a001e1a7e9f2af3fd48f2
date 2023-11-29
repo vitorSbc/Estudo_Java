@@ -1,0 +1,29 @@
+package aplication;
+
+import java.time.LocalDateTime;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Order;
+import entities.enums.OrderStatus;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Digite o ID: \n");
+		int id = scanner.nextInt();
+		System.out.print("Digite o statuso do pedido: \n");
+		System.out.println("PENDING_PAYMENT,\n"
+				+ "	PROCESSING,\n"
+				+ "	SHIPPED,\n"
+				+ "	DELIVERED");
+		Order ordem = new Order(25,LocalDateTime.now(),OrderStatus.PENDING_PAYMENT);
+		
+		System.out.println(ordem);
+	}
+
+}

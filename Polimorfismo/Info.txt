@@ -1,0 +1,1 @@
+Um pequeno codigo que visa treinar o polimorfismo, onde existe a Super classe "Trabalhador" e a Sub Classe "Tercerizado", onde o trabalhador recebe em relação ao valor a hora e as horas trabalhadas, enquanto o Tercerizado recebe o mesmo que o trabalhador normal, mais o valor adicional * 110%

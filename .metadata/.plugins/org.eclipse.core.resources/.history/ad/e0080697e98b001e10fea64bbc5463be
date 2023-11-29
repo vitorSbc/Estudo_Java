@@ -1,0 +1,60 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entitie.Departament;
+import entitie.HourContract;
+import entitie.Worker;
+import entitie.enums.WorkerLevel;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Digite o departamento: ");
+		String departamento = sc.next();
+		System.out.println("Digite os dados do trabalhador: ");
+		sc.nextLine();
+		System.out.print("Nome: ");
+		String name = sc.nextLine();
+		System.out.print("Level: ");
+		String lvl = sc.next();
+		System.out.print("Salário Base: ");
+		Double salary = sc.nextDouble();
+		
+		Worker trabalhador = new Worker(name,WorkerLevel.valueOf(lvl), salary, new Departament(departamento));
+		
+		System.out.print("Quantos contratos serao? ");
+		int quantContratos = sc.nextInt();
+		for(int i = 0;i< quantContratos ; i++) {
+			DateTimeFormatter fm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			System.out.println("Digite o contrato n#" + i + 1);
+			System.out.print("Data (DD/MM/YYYY):" );
+			LocalDate data = LocalDate.parse(sc.next(), fm);
+			System.out.print("Valor por hora: ");
+			Double valuePerHour = sc.nextDouble();
+			System.out.print("Quantas horas trabalhadas? ");
+			Integer hour = sc.nextInt();
+			HourContract contrato = new HourContract(data, valuePerHour, hour);
+			trabalhador.addContract(contrato);
+		}
+		System.out.print("Digite o mes e o ano para calcular quanto recebeu (MM/YYYY): ");
+		Integer mes = sc.nextInt();
+		Integer ano = sc.nextInt();
+		Double valor = trabalhador.income(mes, ano);
+		
+		System.out.printf("Name: %s \n"
+						+ "Departamento: %s \n"
+						+ "Valor para %d/%d: %.2f",trabalhador.getName(),trabalhador.getDepartament(),mes,ano,trabalhador.income(mes, ano));
+		
+		
+		sc.close();
+	}
+
+}

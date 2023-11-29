@@ -1,0 +1,17 @@
+package entities;
+
+public class PessoaJuridica extends People {
+
+	private Integer numFuncionarios;
+	
+	public PessoaJuridica() {
+		super();
+	}
+	
+	@Override
+	public Double imposto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

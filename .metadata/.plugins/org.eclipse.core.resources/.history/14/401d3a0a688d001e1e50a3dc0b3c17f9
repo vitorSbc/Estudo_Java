@@ -1,0 +1,46 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Client;
+import entities.Order;
+import entities_enuns.OrderStatus;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Digite os dados do cliente");
+		System.out.print("Name: ");
+		String name = sc.nextLine();
+		System.out.print("E-mail: ");
+		String email = sc.nextLine();
+		System.out.print("Data de nascimento (DD/MM/YYYY): ");
+		LocalDate nascimento = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		Client cliente = new Client(name, email, nascimento);
+		
+		System.out.print("Entre os status do pedido: \n");
+		System.out.print("Status: ");
+		String status = sc.next();
+		Order ordem = new Order(LocalDateTime.now(), OrderStatus.valueOf(status));
+		System.out.print("Quantos items serão ? : ");
+		Integer itens = sc.nextInt();
+		for(int i = 0;i<itens;i++) {
+			System.out.printf("Produto n#%d",i+1);
+			System.out.print("Nome do Produto: ");
+			
+			System.out.print("Preço do Produto: ");
+		}
+		
+		System.out.println(cliente);
+		sc.close();
+	}
+
+}

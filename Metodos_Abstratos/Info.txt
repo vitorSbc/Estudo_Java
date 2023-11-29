@@ -1,0 +1,1 @@
+Um pequeno código proposto como exercicio sobre classes e metodos abstratos, onde existe uma classe abstrata com metodos abstrata chamada "Shape" e seu metodo abstrato calArea(),  onde existe subclasses chamadas Retangulo e Circulo, onde cada um tem o polimorfismo para se calcular cada respectiva area. 
